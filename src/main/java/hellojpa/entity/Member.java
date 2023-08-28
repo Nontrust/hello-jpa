@@ -1,27 +1,37 @@
 package hellojpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
+//@Table(uniqueConstraints =
+//        {@UniqueConstraint(name = "NAME_AGE_UNIQUE", columnNames = {"NAME","AGE"})}
+//)
+
+// allocationSize = 50 -> next call 메모리에 50개 올림 (was 오류시 메모리 날라감)
+@SequenceGenerator(name="member_seq_generator", sequenceName = "member_seq")
 public class Member {
     @Id
+    // sequence의 다음 값만 불러옴
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
+    // entity manager가 영속성을 얻은 시점에 바로 insert문 날림 -> 벌크 인서트에 불리할듯?
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    @Column(name ="name", updatable = false, nullable = false, unique = true)
+    private String username;
+    private Integer age;
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+    @Lob
+    private String description;
 
-    public Long getId(){
-        return this.id;
-    }
-    public void setId(Long id){
-        this.id = id;
-    }
+    @Transient
+    private int temp;
 
-    public String getName(){
-        return this.name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
+    public Member(){}
 
 }

@@ -6,16 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
         //persistence.xml -> <persistence-unit name="hello">
         //애플리케이션 로딩 시점에 하나만 만들어야됨
-        EntityManagerFactory helloEntityManagerFactory = Persistence.createEntityManagerFactory("test");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("test");
 
         //트랜잭션 단위 내에 매니저 생성
-        EntityManager entityManager = helloEntityManagerFactory.createEntityManager();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         /*code*/
         //트랜잭션 생성
@@ -23,20 +22,20 @@ public class JpaMain {
         //트랜잭션 시작
         transaction.begin();
         try {
-            List<Member> result = entityManager.createQuery("select M from Member as M", Member.class)
-                    //pagination
-                    .setFirstResult(1)
-                    .setMaxResults(10)
-                    .getResultList();
-            for (Member member : result) {
-                
-            }
-//            Member findMember = entityManager.find(Member.class, 1L);
-            //수정 (persist 할 필요 없음) -> 자동 Update
-//            findMember.setName("HelloJPA");
+//            //비영속
+//            Member member = new Member();
+//            member.setId(101L);
+//            member.setName("회원");
+//
+//            //영속
+//            entityManager.persist(member);
 
-            //삭제
-            //entityManager.remove(findMember);
+            Member findMember = entityManager.find(Member.class, 100L);
+            //준영속
+//            entityManager.detach(member);
+            //삭제제
+//           entityManager.remove();
+
 
             transaction.commit();
         }catch (Exception e){
@@ -45,6 +44,6 @@ public class JpaMain {
             entityManager.close();
         }
 
-        helloEntityManagerFactory.close();
+        entityManagerFactory.close();
     }
 }
