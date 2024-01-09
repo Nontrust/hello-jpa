@@ -3,7 +3,9 @@ package hellojpa.entity;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 //@Table(uniqueConstraints =
@@ -15,9 +17,10 @@ import java.util.Date;
 public class Member {
     @Id
     // sequence의 다음 값만 불러옴
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
     // entity manager가 영속성을 얻은 시점에 바로 insert문 날림 -> 벌크 인서트에 불리할듯?
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
+    @Column(name = "member_id")
     private Long id;
     @Column(name ="name", updatable = false, nullable = false, unique = true)
     private String username;
@@ -31,6 +34,9 @@ public class Member {
 
     @Transient
     private int temp;
+
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProduct = new ArrayList<>();
 
     public Member(){}
 

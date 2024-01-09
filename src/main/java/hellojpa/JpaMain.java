@@ -1,6 +1,10 @@
 package hellojpa;
 
 import hellojpa.entity.Member;
+import hellojpa.example1.Items;
+import hellojpa.example1.Members;
+import hellojpa.example1.Orders;
+import hellojpa.example1.OrderItem;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,6 +35,10 @@ public class JpaMain {
 //            entityManager.persist(member);
 
             Member findMember = entityManager.find(Member.class, 100L);
+            Orders order = entityManager.find(Orders.class, 100L);
+            Items item = entityManager.find(Items.class, 100L);
+            Members members = entityManager.find(Members.class, 100L);
+            OrderItem orderItem = entityManager.find(OrderItem.class, 100L);
             //준영속
 //            entityManager.detach(member);
             //삭제제

@@ -5,6 +5,13 @@
     <persistence-unit name="test">
         <!--gradle build 시 path 인식 필요-->
         <class>hellojpa.entity.Member</class>
+        <class>hellojpa.entity.MemberProduct</class>
+        <class>hellojpa.example1.Items</class>
+        <class>hellojpa.example1.Orders</class>
+        <class>hellojpa.example1.OrderItem</class>
+        <class>hellojpa.example1.Product</class>
+        <class>hellojpa.example1.Members</class>
+        <class>hellojpa.example1.Locker</class>
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
