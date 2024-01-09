@@ -2,6 +2,8 @@ package hellojpa.entity;
 
 
 
+import hellojpa.example1.MemberProduct;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;

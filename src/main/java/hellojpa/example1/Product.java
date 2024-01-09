@@ -1,7 +1,5 @@
 package hellojpa.example1;
 
-import hellojpa.entity.MemberProduct;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

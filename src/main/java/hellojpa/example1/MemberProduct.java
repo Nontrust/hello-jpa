@@ -1,5 +1,6 @@
-package hellojpa.entity;
+package hellojpa.example1;
 
+import hellojpa.entity.Member;
 import hellojpa.example1.Product;
 
 import javax.persistence.*;
