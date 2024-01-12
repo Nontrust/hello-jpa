@@ -4,6 +4,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="test">
         <!--gradle build 시 path 인식 필요-->
+
         <class>hellojpa.entity.Member</class>
         <class>hellojpa.example1.MemberProduct</class>
         <class>hellojpa.example1.Items</class>
@@ -12,6 +13,15 @@
         <class>hellojpa.example1.Product</class>
         <class>hellojpa.example1.Members</class>
         <class>hellojpa.example1.Locker</class>
+
+        <class>hellojpa.example3.Member3</class>
+        <class>hellojpa.example3.Orders3</class>
+        <class>hellojpa.example3.Category3</class>
+        <class>hellojpa.example3.Delivery3</class>
+        <class>hellojpa.example3.Item3</class>
+        <class>hellojpa.example3.OrderItem3</class>
+        <class>hellojpa.example3.CategoryItem3</class>
+
         <properties>
             <!-- 필수 속성 -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
