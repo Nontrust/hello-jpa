@@ -4,23 +4,10 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="test">
         <!--gradle build 시 path 인식 필요-->
-
-        <class>hellojpa.entity.Member</class>
-        <class>hellojpa.example1.MemberProduct</class>
-        <class>hellojpa.example1.Items</class>
-        <class>hellojpa.example1.Orders</class>
-        <class>hellojpa.example1.OrderItem</class>
-        <class>hellojpa.example1.Product</class>
-        <class>hellojpa.example1.Members</class>
-        <class>hellojpa.example1.Locker</class>
-
-        <class>hellojpa.example3.Member3</class>
-        <class>hellojpa.example3.Orders3</class>
-        <class>hellojpa.example3.Category3</class>
-        <class>hellojpa.example3.Delivery3</class>
-        <class>hellojpa.example3.Item3</class>
-        <class>hellojpa.example3.OrderItem3</class>
-        <class>hellojpa.example3.CategoryItem3</class>
+        <class>hellojpa.inheritance.Item</class>
+        <class>hellojpa.inheritance.Album</class>
+        <class>hellojpa.inheritance.Book</class>
+        <class>hellojpa.inheritance.Movie</class>
 
         <properties>
             <!-- 필수 속성 -->
@@ -35,7 +22,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.jdbc.batch_size" value="10"/>
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
         </properties>
     </persistence-unit>
 </persistence>
