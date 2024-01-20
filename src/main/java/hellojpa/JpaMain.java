@@ -1,10 +1,6 @@
 package hellojpa;
 
-import hellojpa.entity.Member;
-import hellojpa.example1.Items;
-import hellojpa.example1.Members;
-import hellojpa.example1.Orders;
-import hellojpa.example1.OrderItem;
+import hellojpa.inheritance.Album;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,24 +22,9 @@ public class JpaMain {
         //트랜잭션 시작
         transaction.begin();
         try {
-//            //비영속
-//            Member member = new Member();
-//            member.setId(101L);
-//            member.setName("회원");
-//
-//            //영속
-//            entityManager.persist(member);
+            Album album = entityManager.getReference(Album.class, 1L);
 
-            Member findMember = entityManager.find(Member.class, 100L);
-            Orders order = entityManager.find(Orders.class, 100L);
-            Items item = entityManager.find(Items.class, 100L);
-            Members members = entityManager.find(Members.class, 100L);
-            OrderItem orderItem = entityManager.find(OrderItem.class, 100L);
-            //준영속
-//            entityManager.detach(member);
-            //삭제제
-//           entityManager.remove();
-
+            album.getArtist();
 
             transaction.commit();
         }catch (Exception e){
